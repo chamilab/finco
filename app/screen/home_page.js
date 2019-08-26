@@ -22,13 +22,11 @@ function playSound(testInfo, component){
   const callback = (error, sound) => {
     if (error) {
       Alert.alert('error', error.message);
-      setTestState(testInfo, component, 'fail');
       return;
     }
     testInfo.onPrepared && testInfo.onPrepared(sound, component);
     sound.play(() => {
       // Success counts as getting to the end
-      setTestState(testInfo, component, 'win');
       // Release when it's done so we're not using up resources
       sound.release();
     }); 
