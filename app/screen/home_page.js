@@ -37,6 +37,7 @@ function playSound(testInfo, component){
     const sound = new Sound(testInfo.uri, testInfo.basePath, error => callback(error, sound));
   }
 }
+
 export default class home_page extends Component {
   constructor(props) {
     super(props);
@@ -111,6 +112,7 @@ export default class home_page extends Component {
           <Button style={design.pause_button}>
             <FontAwesome name="pause" color="#FFAA00" />
           </Button>
+          {dataSource.map((testInfo)=> 
           <Button style={design.play_button}
           onPress={() => {
             return playSound(testInfo.uri, this);
@@ -118,6 +120,8 @@ export default class home_page extends Component {
           >
             <FontAwesome name="play" color="#FFAA00" />
           </Button>
+          )}
+          
           <Button style={design.stop_button}>
             <FontAwesome name="stop" color="#FFAA00" />
           </Button>
@@ -131,6 +135,7 @@ export default class home_page extends Component {
  
 
   render() {
+      
     return (
       <FlatList
         data={this.state.dataSource}
