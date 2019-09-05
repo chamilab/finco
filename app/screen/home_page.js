@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
   ImageBackground,
   ProgressBarAndroid,
-  Platform
+  Platform,
+  Alert
 } from "react-native";
 import { Button } from "native-base";
 import { Icon } from 'react-native-elements';
@@ -18,25 +19,7 @@ import dataSource from '../data/flatListData.json';
 import Sound from 'react-native-sound';
 
 
-function playSound(testInfo, component){
-  const callback = (error, sound) => {
-    if (error) {
-      Alert.alert('error', error.message);
-      return;
-    }
-    testInfo.onPrepared && testInfo.onPrepared(sound, component);
-    sound.play(() => {
-      // Success counts as getting to the end
-      // Release when it's done so we're not using up resources
-      sound.release();
-    }); 
-  };
-  if (testInfo.isRequire) {
-    const sound = new Sound(testInfo.uri, error => callback(error, sound));
-  } else {
-    const sound = new Sound(testInfo.uri, testInfo.basePath, error => callback(error, sound));
-  }
-}
+
 
 export default class home_page extends Component {
   constructor(props) {
@@ -80,7 +63,25 @@ export default class home_page extends Component {
     )
 
   })
-
+  playSound(testInfo, component){
+    const callback = (error, sound) => {
+      if (error) {
+        Alert.alert('error', error.message);
+        return;
+      }
+      testInfo.onPrepared && testInfo.onPrepared(sound, component);
+      sound.play(() => {
+        // Success counts as getting to the end
+        // Release when it's done so we're not using up resources
+        sound.release();
+      }); 
+    };
+    if (testInfo.isRequire) {
+      const sound = new Sound(testInfo.uri, error => callback(error, sound));
+    } else {
+      const sound = new Sound(testInfo.uri, testInfo.basePath, error => callback(error, sound));
+    }
+  }
   
   rendeListItem = ({ item }) => {
     return (
@@ -112,15 +113,15 @@ export default class home_page extends Component {
           <Button style={design.pause_button}>
             <FontAwesome name="pause" color="#FFAA00" />
           </Button>
-          {dataSource.map((testInfo)=> 
-          <Button style={design.play_button}
-          onPress={() => {
-            return playSound(testInfo.uri, this);
-          }}
-          >
-            <FontAwesome name="play" color="#FFAA00" />
-          </Button>
-          )}
+         
+        
+            <Button
+              style={design.play_button}
+              onPress={() => this.playSound(item, this)}
+            >
+              <FontAwesome name="play" color="#FFAA00" />
+            </Button>
+         
           
           <Button style={design.stop_button}>
             <FontAwesome name="stop" color="#FFAA00" />
