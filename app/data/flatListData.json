@@ -3,25 +3,26 @@
     "id": "1",
     "name" : "‍ශ්‍රද්ධාව වැඩීම",
      "time": "පෙ.ව 04.16", 
-    "uri": "https://www.youtube.com/watch?v=vPHb8qMZlmI"
+    "uri": "https://raw.githubusercontent.com/chamilab/finco/master/test1.mp3",
+     
 },
 {
        "id": "2",
        "name" : "‍සීලය වැඩීම",
         "time": "පෙ.ව 05.51", 
-       "uri": "https://www.soundjay.com/button/button-2.mp3"
+       "uri": "https://raw.githubusercontent.com/chamilab/finco/master/test2.mp3"
    },
    {
        "id": "3",
        "name" : "‍සතිය වැඩීම",
         "time": "පෙ.ව 11.45", 
-       "uri": "https://www.soundjay.com/button/button-3.mp3"
+       "uri": "https://raw.githubusercontent.com/chamilab/finco/master/test3.mp3"
    },
    {
        "id": "4",
        "name" : "‍සෘජු වැඩීම",
         "time": "ප.ව 03.26", 
-       "uri": "https://www.soundjay.com/button/button-4.mp3"
+       "uri": "https://raw.githubusercontent.com/chamilab/finco/master/test4.mp3"
    },
    {
        "id": "5",
